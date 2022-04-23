@@ -12,7 +12,7 @@
   justify-content: space-around;
   align-items: center;
   box-shadow: 2px 2px 6px rgba(56, 56, 56, 0.482);
-  background-image: linear-gradient(45deg, rgb(36, 128, 247), rgb(32, 249, 162));
+  background-color: rgb(0, 134, 251);
   color: white;
   border-radius: 7px;
   font-weight: bold;
@@ -57,9 +57,10 @@
   border: none;
   color: white;
   font-size: 0.9rem;
+  background-color: rgb(250, 1, 209);
 }
 
 .form button:hover {
   color: rgb(250, 1, 209);
-  background-color: rgba(255, 255, 255, 0.536);
+  background-color: white;
 }
