@@ -43,7 +43,10 @@ function App() {
   }
 
   function borrowHandler(book) {
-    if (booksInLibrary[book.ISBN].count < 1) return;
+    if (booksInLibrary[book.ISBN].count < 1) {
+      alert("This book is unavailable right now");
+      return;
+    }
 
     setBooksInLibrary((prevState) => {
       const newState = { ...prevState };
