@@ -8,9 +8,24 @@ import UserBooks from "./Components/UserBooks/UserBooks";
 
 function App() {
   //-------------------------------------------------------BOOKS IN MEMORY
-  const [booksInLibrary, setBooksInLibrary] = useState({});
+  const [booksInLibrary, setBooksInLibrary] = useState({
+    "111-111-111-111-1": {
+      count: 0,
+      name: "test",
+      price: 100,
+      ISBN: "111-111-111-111-1",
+    },
+  });
 
-  const [userBooks, setUserBooks] = useState({});
+  const [userBooks, setUserBooks] = useState({
+    "111-111-111-111-1": {
+      count: 1,
+      name: "test",
+      price: 100,
+      ISBN: "111-111-111-111-1",
+      borrowDate: [new Date("01/Apr/2022 03:00")],
+    },
+  });
 
   //-------------------------------------------------------RENDER LOGIC
   const [formOn, setFormOn] = useState(false);
@@ -59,15 +74,11 @@ function App() {
 
       if (newState[book.ISBN]) {
         newState[book.ISBN].count++;
-        newState[book.ISBN].borrowDate.push(
-          new Date().toISOString().replaceAll("-", "").slice(0, 8)
-        );
+        newState[book.ISBN].borrowDate.push(new Date());
       } else {
         newState[book.ISBN] = { ...book };
         newState[book.ISBN].count = 1;
-        newState[book.ISBN].borrowDate = [
-          new Date().toISOString().replaceAll("-", "").slice(0, 8),
-        ];
+        newState[book.ISBN].borrowDate = [new Date()];
       }
       return newState;
     });
@@ -83,19 +94,18 @@ function App() {
     setUserBooks((prevState) => {
       const newState = { ...prevState };
 
-      const todayDate = new Date()
-        .toISOString()
-        .replaceAll("-", "")
-        .slice(0, 8);
+      const todayDate = new Date();
 
       let daysBorrowed =
-        parseInt(todayDate) - parseInt(newState[book.ISBN].borrowDate[0]);
+        parseInt((todayDate - newState[book.ISBN].borrowDate[0]) / (1000 * 60 * 60 * 24));
 
       if (daysBorrowed < 15) {
         alert(`You have to pay ${newState[book.ISBN].price}€`);
       } else {
         alert(
-          `You surpassed the standard borrow period of two weeks, you have to pay ${
+          `You surpassed the standard borrow period of two weeks by ${
+            daysBorrowed - 14
+          } days, you have to pay ${
             Number(newState[book.ISBN].price) +
             0.01 * (daysBorrowed - 14) * Number(newState[book.ISBN].price)
           }€`
