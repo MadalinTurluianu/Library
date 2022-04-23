@@ -1,3 +1,13 @@
+@keyframes fade-in {
+  0% {
+    transform: translateX(-10rem);
+    opacity: 0%;
+  } 100% {
+    transform: translateX(0rem);
+    opacity: 100%;
+  }
+}
+
 .book {
   position: relative;
   display: flex;
@@ -13,14 +23,14 @@
   border-radius: 7px;
   color: white;
   font-size: 1rem;
-  font-weight: bold;
+  animation: fade-in 1s;
 }
 
 .count {
   position: absolute;
   right: -0.7rem;
   top: -0.7rem;
-  background-color: rgb(255, 16, 127);
+  background-color: rgb(255, 115, 0);
   margin: 0;
   height: 1.4rem;
   width: 1.4rem;
@@ -34,16 +44,17 @@
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   margin-bottom: 1rem;
+  margin-top: 1rem;
   background-color: rgba(0, 213, 255, 0.536);
   font-weight: bold;
   font-size: 1rem;
   border: none;
   color: white;
-  background-color: rgb(255, 16, 127);
+  background-color: rgb(255, 115, 0);
 }
 
 .book button:hover {
-  color: rgb(255, 16, 127);
+  color: rgb(255, 115, 0);
   text-shadow: none;
   background-color: white;
 }

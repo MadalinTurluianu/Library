@@ -57,10 +57,10 @@
   border: none;
   color: white;
   font-size: 0.9rem;
-  background-color: rgb(250, 1, 209);
+  background-color: rgb(255, 115, 0);
 }
 
 .form button:hover {
-  color: rgb(250, 1, 209);
+  color: rgb(255, 115, 0);
   background-color: white;
 }
